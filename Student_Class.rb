@@ -4,7 +4,7 @@ require 'pry'
 
 
 class Student
-  attr_accessor :name, :excerpt, :student_link, :meta
+  attr_accessor :name, :excerpt, :student_link, :github, :twitter, :linkedin, :meta
   @@student_hash = {}
 
   def initialize(name)

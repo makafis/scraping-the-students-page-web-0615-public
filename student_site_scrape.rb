@@ -23,12 +23,36 @@ end
 
 
 
-def individual_page(url, student)
-  individual_page = Nokogiri::HTML(open(url))
-binding.pry
-  individual_profile = (individual_page.css('.social-icons a').attribute('href').value)
 
-  puts individual_profile
+def student_social(url, student)
+  individual_page = Nokogiri::HTML(open(url))
+
+  icons = (individual_page.css('.social-icons a'))
+
+  icons.each do |value|
+      if value.attribute('href').value.include?("twitter")
+          #add to twitter 
+          student.twitter = value.attribute('href').value
+      end
+      if value.attribute('href').value.include?("github")
+     
+      student.github = value.attribute('href').value      
+      end
+      if value.attribute('href').value.include?("linkedin")
+    
+      student.linkedin = value.attribute('href').value      
+      end
+  end
+
+  puts "Here is a link to the students account #{student.twitter}"
+  puts "Here is a link to the students account #{student.github}"
+  puts "Here is a link to the students account #{student.linkedin}"
+
+
+
+  #ok-text-column-2
+  biography = (individual_page.css('#ok-text-column-2 p').first.text)
+  puts "The Biography of #{student.name} is: #{biography}"
 
 
 end

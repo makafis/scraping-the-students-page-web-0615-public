@@ -38,7 +38,7 @@ def get_student_info
     puts  puts student.meta
 
     ###INDIVIDUAL USER PAGES SCRAPE
-    x = individual_page(url, student)
+    x = student_social(url, student)
 
     puts x
     
