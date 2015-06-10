@@ -2,17 +2,11 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 require_relative 'Student_Class.rb'
+require_relative 'student_site_scrape.rb'
 
 
 
-
-  url = 'http://web0615.students.flatironschool.com/'
-  data = Nokogiri::HTML(open(url))
-
-
-
-
-  profiles = data.css('.home-blog-post')
+ 
 
 
 def set_up_student_hash(profiles)
@@ -27,6 +21,17 @@ def set_up_student_hash(profiles)
     # binding.pry
 end
 
+
+
+def individual_page(url, student)
+  individual_page = Nokogiri::HTML(open(url))
+binding.pry
+  individual_profile = (individual_page.css('.social-icons a').attribute('href').value)
+
+  puts individual_profile
+
+
+end
 
 
 
