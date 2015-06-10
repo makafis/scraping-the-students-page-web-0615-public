@@ -8,7 +8,7 @@ class Student
   @@student_hash = {}
 
   def initialize(name)
-    @@student_hash[name.to_sym] = self
+    @@student_hash[name] = self
     @name = name
   end
   #hash getter

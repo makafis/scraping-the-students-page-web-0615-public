@@ -15,21 +15,20 @@ require_relative 'Student_Class.rb'
   profiles = data.css('.home-blog-post')
 
 
-def get_student_names(profiles)
-    name_array = []
-    excerpt = []
+def set_up_student_hash(profiles)
     profiles.each do |element|
 
-      name_array << "#{element.css('.big-comment h3 a').text}" 
-      excerpt << "#{element.css('.excerpt p').text}"
+      student = Student.new("#{element.css('.big-comment h3 a').text}")
+      student.excerpt = "#{element.css('.excerpt p').text}"
+      student.student_link = ("#{element.css('.big-comment h3 a').attribute('href').value}")
+    
+      student.meta = ("#{element.css('.home-blog-post-meta').text}")
     end
-    binding.pry
+    # binding.pry
 end
 
 
 
-
-get_student_names(profiles)
 
 
 
